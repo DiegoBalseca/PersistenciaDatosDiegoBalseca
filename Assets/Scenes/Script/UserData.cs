@@ -1,4 +1,4 @@
-using System.UnityEngine;
+using UnityEngine;
 public static class UserData 
 {
    public static string playerName;  

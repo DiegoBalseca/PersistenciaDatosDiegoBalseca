@@ -33,14 +33,22 @@ public class PlayerData : MonoBehaviour
         public void SaveData()
         {
 
-            UserData.playerName = playerName;
+            /*UserData.playerName = playerName;
             UserData.playerMaxHealth = playerMaxHealth;
             UserData.playerMaxMana = playerMaxMana;
             UserData.playerExp = playerExp;
-            UserData.playerPosition = playerPosition;
+            UserData.playerPosition = playerPosition;*/
+
+            Stats.userStats.playerName = playerName;
+            Stats.userStats.playerPosition = playerPosition;
+            Stats.userStats.playerHealth = playerMaxHealth;
+
+            SavingDataSystem.Save();
 
             
-            Debug.Log("Data saved");
+
+            
+           // Debug.Log("Data saved");
 
         }
 
@@ -50,12 +58,19 @@ public class PlayerData : MonoBehaviour
         public void LoadData()
         {
 
-            playerName = UserData.playerName;
+           /* playerName = UserData.playerName;
             playerMaxHealth = UserData.playerMaxHealth;
             playerMaxMana = UserData.playerMaxMana;
             playerExp = UserData.playerExp;
+            playerPosition = UserData.playerPosition;*/
 
-            Debug.Log("Data loaded");
+            playerName = Stats.userStats.playerName;
+            playerPosition = Stats.userStats.playerPosition;
+            playerMaxHealth = Stats.userStats.playerMaxHealth;
+
+           // Debug.Log("Data loaded");
+
+           SavingDataSystem.Load();
 
         }
 
@@ -65,6 +80,9 @@ public class PlayerData : MonoBehaviour
             PlayerPrefs.SetInt("Player Health", playerMaxHealth);
             PlayerPrefs.SetInt("Player Mana", playerMaxMana);
             PlayerPrefs.SetInt("Player exp", playerExp);
+            PlayerPrefs.SetFloat("Player position", playerPosition.x);
+            PlayerPrefs.SetFloat("Player position", playerPosition.y);
+            PlayerPrefs.SetFloat("Player position", playerPosition.z);
         }
 
 
@@ -77,6 +95,9 @@ public class PlayerData : MonoBehaviour
             playerMaxHealth = PlayerPrefs.GetInt("Player Health", 1);
             playerMaxMana = PlayerPrefs.GetInt("Player Mana", 1);
             playerExp = PlayerPrefs.GetInt("Player exp", 1);
+            playerPosition.x = PlayerPrefs.GetFloat("Player position", 0);
+            playerPosition.y = PlayerPrefs.GetFloat("Player position", 0);
+            playerPosition.z = PlayerPrefs.GetFloat("Player position", 0);
         }
         
 }
