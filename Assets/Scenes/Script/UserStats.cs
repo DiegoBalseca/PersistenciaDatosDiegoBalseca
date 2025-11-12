@@ -6,7 +6,7 @@ public class UserStats
 
   public Vector3 playerPosition;
 
-  public int playerHealth;
+  public int playerMaxHealth;
 
   public int playerExp;
 }

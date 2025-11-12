@@ -41,7 +41,7 @@ public class PlayerData : MonoBehaviour
 
             Stats.userStats.playerName = playerName;
             Stats.userStats.playerPosition = playerPosition;
-            Stats.userStats.playerHealth = playerMaxHealth;
+            Stats.userStats.playerMaxHealth = playerMaxHealth;
 
             SavingDataSystem.Save();
 

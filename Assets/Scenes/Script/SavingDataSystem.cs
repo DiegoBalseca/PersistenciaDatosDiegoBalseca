@@ -3,11 +3,11 @@ using System.IO;
 
 public static class SavingDataSystem 
 {
-   static string savePath = Application.persistentDataPath + "/Savefile.json."
+   static string savePath = Application.persistentDataPath + "/Savefile.json.";
     public static void Save()
      {
         string json = JsonUtility.ToJson(Stats.userStats, true);
-        File.writeAlltext(savePath, json);
+        File.WriteAllText(savePath, json);
         Debug.Log("Guardado en: " + savePath);
      }
 
@@ -15,14 +15,15 @@ public static class SavingDataSystem
      {
         if(File.Exists(savePath))
         {
-            string json = file.ReadAllText(savePath);
-            stats.userStats = JsonUtility.From<UserStats>(json);
+            string json = File.ReadAllText(savePath);
+            Stats.userStats = JsonUtility.FromJson<UserStats>(json);
             Debug.Log("Datos cargados");
         }
         else
         {
         {
-         Debug.Log("No hay datos guardados")
+         Debug.Log("No hay datos guardados");
         }
+     }
      }
 }
